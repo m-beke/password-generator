@@ -13,47 +13,28 @@ var upperCasedCharacters = ['A','B','C','D','E','F','G','H','I','J','K','L','M',
 
 function generatePassword(){
 
+   //Array to store types of characters to include in password
+   var possibleCharacters = [specialCharacters, numericCharacters, lowerCasedCharacters, upperCasedCharacters];
+
+   //Array to contain one of each type of chosen character to ensure each will be used
+   var guaranteedCharacters = [];
+ 
+   //Array to store result
+   var result = [];
+ 
+   //Add possibleCharacters and guaranteedCharacters to result
+   possibleCharacters.concat(guaranteedCharacters);
+ 
+   //Add specialCharacters to possibleCharacters
+   specialCharacters.concat(possibleCharacters); 
+
   //Starts with prompt to ask how many characters you want in the password
-  var characterCount = window.prompt("How many characters would you like to use?");
+  do {
+    characterCount = window.prompt("How many characters would you like to use? (Please enter a number between 8-128.");
 
-  //Array to store types of characters to include in password
-  var possibleCharacters = [specialCharacters, numericCharacters, lowerCasedCharacters, upperCasedCharacters];
-
-  //Array to contain one of each type of chosen character to ensure each will be used
-  var guaranteedCharacters = [];
-
-  //Array to store result
-  var result = [];
-
-  //Add possibleCharacters and guaranteedCharacters to result
-  possibleCharacters.concat(guaranteedCharacters);
-
-  //Add specialCharacters to possibleCharacters
-  specialCharacters.concat(possibleCharacters);
-
-  //'if' logic for possible options
-  if (characterCount === "8") {
-    window.confirm("this code works");
-  }
-
-  if (characterCount !== "8") {
-    window.confirm("Please select between 8-128 characters");
-  }
-
-  if (window.confirm("Would you like to use special characters?") === true) {
-    
-  }
-
-  if (window.confirm("Would you like to use numbers?") === true) {
-    
-  }
-
-  if (window.confirm("Would you like to use uppercase letters?") === true) {
-    
-  }
-
-  if (window.confirm("Would you like to use lowercase letters?") === true) {
-    
+  } while (isNaN(characterCount) || characterCount < 8 || characterCount > 129)
+  if (characterCount >= 8 && characterCount <= 128) {
+    window.confirm("This code works!");
   }
   
 }
