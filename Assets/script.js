@@ -32,8 +32,12 @@ function generatePassword(){
   specialCharacters.concat(possibleCharacters);
 
   //'if' logic for possible options
-  if (characterCount === "") {
-    
+  if (characterCount === "8") {
+    window.confirm("this code works");
+  }
+
+  if (characterCount !== "8") {
+    window.confirm("Please select between 8-128 characters");
   }
 
   if (window.confirm("Would you like to use special characters?") === true) {
