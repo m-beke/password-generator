@@ -31,12 +31,17 @@ function generatePassword(){
   //Starts with prompt to ask how many characters you want in the password
   do {
     characterCount = window.prompt("How many characters would you like to use? (Please enter a number between 8-128.");
-
+    characterCount = parseInt(characterCount, 10);
   } while (isNaN(characterCount) || characterCount < 8 || characterCount > 129)
   if (characterCount >= 8 && characterCount <= 128) {
-    window.confirm("This code works!");
+  }else {
+    window.alert("ERROR: Your password must contain between 8-128 characters");
+    return "";
   }
-  
+  var lowerInclude = window.confirm("Would you like your password to include lowercase letters?");
+  if (lowerInclude === true) {
+    result = lowerCasedCharacters.concat(result);
+  }
 }
 
 // Assignment Code
