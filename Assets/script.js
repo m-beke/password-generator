@@ -11,6 +11,8 @@ var lowerCasedCharacters = ['a','b','c','d','e','f','g','h','i','j','k','l','m',
 var upperCasedCharacters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',];
 
 
+
+// What we will use to generate the random password
 function generatePassword(){
 
   // Array to store result
@@ -18,16 +20,16 @@ function generatePassword(){
 
   // Starts with prompt to ask how many characters you want in the password
   do {
-    characterCount = window.prompt("How many characters would you like to use? (Please enter a number between 8-128.");
+    characterCount = window.prompt("How many characters would you like to use? (Please enter a number between 8-128.)");
     characterCount = parseInt(characterCount, 10);
   } while (isNaN(characterCount) || characterCount < 8 || characterCount > 129)
   if (characterCount >= 8 && characterCount <= 128) {
-  }else {
-    window.alert("ERROR: Your password must contain between 8-128 characters.");
-    return "";
+  } else {
+    window.prompt("ERROR: Your password must contain between 8-128 characters.");
+    return;
   }
 
-  // Allows you to choose which character types you would like to use
+  // Allows you to choose which character type(s) you would like to use
   var lowerInclude = window.confirm("Would you like your password to include lowercase letters?");
   if (lowerInclude === true) {
     result = lowerCasedCharacters.concat(result);
