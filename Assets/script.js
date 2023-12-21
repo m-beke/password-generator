@@ -42,6 +42,18 @@ function generatePassword(){
   if (lowerInclude === true) {
     result = lowerCasedCharacters.concat(result);
   }
+  var upperInclude = window.confirm("Would you like your password to include uppercase letters?");
+  if (upperInclude === true) {
+    result = upperCasedCharacters.concat(result);
+  }
+  var numInclude = window.confirm("Would you like your password to include numeric characters?");
+  if (numInclude === true) {
+    result = numericCharacters.concat(result);
+  }
+  var specInclude = window.confirm("Would you like your password to include special characters?");
+  if (specInclude === true) {
+    result = specialCharacters.concat(result);
+  }
 }
 
 // Assignment Code
