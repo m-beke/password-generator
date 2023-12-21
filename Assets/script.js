@@ -13,19 +13,21 @@ var upperCasedCharacters = ['A','B','C','D','E','F','G','H','I','J','K','L','M',
 
 function generatePassword(){
 
-   //Array to store result
-   var result = [];
+  // Array to store result
+  var result = [];
 
-  //Starts with prompt to ask how many characters you want in the password
+  // Starts with prompt to ask how many characters you want in the password
   do {
     characterCount = window.prompt("How many characters would you like to use? (Please enter a number between 8-128.");
     characterCount = parseInt(characterCount, 10);
   } while (isNaN(characterCount) || characterCount < 8 || characterCount > 129)
   if (characterCount >= 8 && characterCount <= 128) {
   }else {
-    window.alert("ERROR: Your password must contain between 8-128 characters");
+    window.alert("ERROR: Your password must contain between 8-128 characters.");
     return "";
   }
+
+  // Allows you to choose which character types you would like to use
   var lowerInclude = window.confirm("Would you like your password to include lowercase letters?");
   if (lowerInclude === true) {
     result = lowerCasedCharacters.concat(result);
@@ -42,9 +44,18 @@ function generatePassword(){
   if (specInclude === true) {
     result = specialCharacters.concat(result);
   }
+
+  // Error message shows up if you don't choose any characters
   if (lowerInclude === false && upperInclude === false && numInclude === false && specInclude === false) {
     window.alert("ERROR: You must include at least one set of characters to generate password.")
   }
+
+  // Generates the password from the chosen character count and type(s)
+  var password = "";
+  for (var i = 0; i < characterCount; i++) {
+    password = password.concat(result[Math.floor(Math.random()*result.length)]);
+  }
+  return password
 }
 
 // Assignment Code
