@@ -13,20 +13,8 @@ var upperCasedCharacters = ['A','B','C','D','E','F','G','H','I','J','K','L','M',
 
 function generatePassword(){
 
-   //Array to store types of characters to include in password
-   var possibleCharacters = [specialCharacters, numericCharacters, lowerCasedCharacters, upperCasedCharacters];
-
-   //Array to contain one of each type of chosen character to ensure each will be used
-   var guaranteedCharacters = [];
- 
    //Array to store result
    var result = [];
- 
-   //Add possibleCharacters and guaranteedCharacters to result
-   possibleCharacters.concat(guaranteedCharacters);
- 
-   //Add specialCharacters to possibleCharacters
-   specialCharacters.concat(possibleCharacters); 
 
   //Starts with prompt to ask how many characters you want in the password
   do {
@@ -53,6 +41,9 @@ function generatePassword(){
   var specInclude = window.confirm("Would you like your password to include special characters?");
   if (specInclude === true) {
     result = specialCharacters.concat(result);
+  }
+  if (lowerInclude === false && upperInclude === false && numInclude === false && specInclude === false) {
+    window.alert("ERROR: You must include at least one set of characters to generate password.")
   }
 }
 
